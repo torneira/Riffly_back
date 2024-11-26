@@ -83,7 +83,7 @@ app.post("/usuarios",async(req,res)=>{
         })
         const {id, nome_usuario, email_usuario, senha_usuario, foto_usuario} = req.body
         const [result,fields]  = 
-            await conexao.query("INSERT INTO produtos VALUES (?,?,?,?,?)",
+            await conexao.query("INSERT INTO usuarios VALUES (?,?,?,?,?)",
                 [id, nome_usuario, email_usuario, senha_usuario, foto_usuario])
         await conexao.end()
         res.status(200).send(result)
@@ -124,7 +124,7 @@ app.post("/album",async(req,res)=>{
         })
         const {id, nome_album, cantor_musica, quant_musicas_album, lancamento_album, capa_album, ouvintes_album} = req.body
         const [result,fields]  = 
-            await conexao.query("INSERT INTO produtos VALUES (?,?,?,?,?,?,?)",
+            await conexao.query("INSERT INTO album VALUES (?,?,?,?,?,?,?)",
                 [id, nome_album, cantor_musica, quant_musicas_album, lancamento_album, capa_album, ouvintes_album])
         await conexao.end() 
         res.status(200).send(result)
