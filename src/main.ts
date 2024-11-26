@@ -141,23 +141,23 @@ app.listen(8000,()=>{
 })
 
 //rota para listar comentarios
-app.get('/comentarios',(req,res) => {
-    db.query('SELECT * FROM comentarios', (err,results)=> {
-      if (err) return res.status(500).send(err);
-      res.json(results);
-    });
-  });
+// app.get('/comentarios',(req,res) => {
+//     db.query('SELECT * FROM comentarios', (err,results)=> {
+//       if (err) return res.status(500).send(err);
+//       res.json(results);
+//     });
+//   });
   
-  //rota para adiconar um comentario
-  app.post('/comentarios',(req,res)=> {
-    const {id, nome_usuario, comentario} = req.body;
-    db.query = 'insert into comentarios (nome_usuario, comentario) values (?,?)';
-      db.query([nome_usuario,comentario], (err,result) =>{
-        if (err) {
-            res.status(500).json({error: 'ERRO ao criar comentario'});
-            } else{
-                res.status(200).json({id: result.insertId, nome_usuario, comentario});
-        }
-      });
-    });
+//   //rota para adiconar um comentario
+//   app.post('/comentarios',(req,res)=> {
+//     const {id, nome_usuario, comentario} = req.body;
+//     db.query = 'insert into comentarios (nome_usuario, comentario) values (?,?)';
+//       db.query([nome_usuario,comentario], (err,result) =>{
+//         if (err) {
+//             res.status(500).json({error: 'ERRO ao criar comentario'});
+//             } else{
+//                 res.status(200).json({id: result.insertId, nome_usuario, comentario});
+//         }
+//       });
+//     });
         
