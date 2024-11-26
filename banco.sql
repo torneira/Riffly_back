@@ -33,7 +33,7 @@ ouvintes_album varchar(300)
 
 create table comentarios(
 id int primary key,
-nome_usuario varchar(50),
+nome_usuario varchar(200) not null,
 comentarios TEXT not null
 );
 
