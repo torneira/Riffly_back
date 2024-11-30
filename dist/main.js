@@ -15,44 +15,6 @@ app.use(express_1.default.json()); //Middleware
 //incluir o CORS -> QUANDO A GENTE TEM OUTRA PORTA FAZENDO REQUISIÇÃO PARA A PORTA DO SERVIDOR
 app.use((0, cors_1.default)());
 //ROTAS
-app.get("/produtos", async (req, res) => {
-    try {
-        const conexao = await promise_1.default.createConnection({
-            host: process.env.dbhost,
-            user: process.env.dbuser,
-            password: process.env.dbpassword,
-            database: process.env.dbname,
-            port: process.env.dbport ? parseInt(process.env.dbport) : 3306
-        });
-        //PASSO 3: QUERY  -> SELECT * FROM produtos
-        const [result, fields] = await conexao.query("SELECT * FROM produtos");
-        await conexao.end();
-        //PASSO 4: Colocar os dados do banco no response
-        res.send(result);
-    }
-    catch (e) {
-        res.status(500).send("Erro do servidor");
-    }
-});
-app.post("/produtos", async (req, res) => {
-    try {
-        const conexao = await promise_1.default.createConnection({
-            host: process.env.dbhost,
-            user: process.env.dbuser,
-            password: process.env.dbpassword,
-            database: process.env.dbname,
-            port: process.env.dbport ? parseInt(process.env.dbport) : 3306
-        });
-        const { id, nome, descricao, preco, imagem } = req.body;
-        const [result, fields] = await conexao.query("INSERT INTO produtos VALUES (?,?,?,?,?)", [id, nome, descricao, preco, imagem]);
-        await conexao.end();
-        res.status(200).send(result);
-    }
-    catch (e) {
-        console.log(e);
-        res.status(500).send("Erro do servidor");
-    }
-});
 app.get("/usuarios", async (req, res) => {
     try {
         const conexao = await promise_1.default.createConnection({
