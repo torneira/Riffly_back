@@ -93,6 +93,46 @@ app.post("/album",async(req,res)=>{
     }  
 })
 
+app.get("/musicas",async(req,res)=>{
+
+
+    try{
+        const conexao = await mysql.createConnection({
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
+            port:process.env.dbport?parseInt(process.env.dbport):16629
+        })
+        const [result,fields]  = await conexao.query("SELECT * FROM musicas")
+        await conexao.end()
+        res.send(result)
+    }catch(e){
+        res.status(500).send("Erro do servidor")
+    }  
+})
+
+app.post("/musicas",async(req,res)=>{
+    try{
+        const conexao = await mysql.createConnection({
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
+            port:process.env.dbport?parseInt(process.env.dbport):16629
+        })
+        const {id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica} = req.body
+        const [result,fields]  = 
+            await conexao.query("INSERT INTO usuarios VALUES (?,?,?,?,?,?,?,?)",
+                [id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica])
+        await conexao.end()
+        res.status(200).send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send("Erro do servidor")
+    }  
+})
+
 // Rota para obter todos os comentários
 app.get('/comentarios', async(req,res)=>{
 
