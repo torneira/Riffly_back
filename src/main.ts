@@ -21,7 +21,7 @@ app.get("/usuarios",async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const [result,fields]  = await conexao.query("SELECT * FROM usuarios")
         await conexao.end()
@@ -38,7 +38,7 @@ app.post("/usuarios",async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {id, nome_usuario, email_usuario, senha_usuario, foto_usuario} = req.body
         const [result,fields]  = 
@@ -61,7 +61,7 @@ app.get("/album",async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         
         const [result,fields]  = await conexao.query("SELECT * FROM album")
@@ -79,7 +79,7 @@ app.post("/album",async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {id, nome_album, cantor_musica, quant_musicas_album, lancamento_album, capa_album, ouvintes_album} = req.body
         const [result,fields]  = 
@@ -102,7 +102,7 @@ app.get('/comentarios', async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         //PASSO 3: QUERY  -> SELECT * FROM produtos
         const [result,fields]  = await conexao.query("SELECT * FROM comentarios")
@@ -121,7 +121,7 @@ app.post('/comentarios', async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {nome_usuario,comentarios} = req.body
         const [result,fields]  = 
