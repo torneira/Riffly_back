@@ -134,30 +134,46 @@ app.post("/album",async(req,res)=>{
     }  
 })
 
+// Rota para obter todos os comentários
+app.get('/comentarios', async(req,res)=>{
 
-//INICIAR O SERVIDOR
-app.listen(8000,()=>{
-    console.log("SERVIDOR INICIADO NA PORTA 8000")
+    try{
+        const conexao = await mysql.createConnection({
+            host: process.env.dbhost,
+            user:process.env.dbuser,
+            password:process.env.dbpassword,
+            database:process.env.dbname,
+            port:process.env.dbport?parseInt(process.env.dbport):3306
+        })
+        //PASSO 3: QUERY  -> SELECT * FROM produtos
+        const [result,fields]  = await conexao.query("SELECT * FROM comentarios")
+        await conexao.end()
+        //PASSO 4: Colocar os dados do banco no response
+        res.send(result)
+    }catch(e){
+        res.status(500).send("Erro do servidor")
+    }  
+})
+// Rota para adicionar um comentário
+app.post('/comentarios', async(req,res)=>{
+    try{
+        const conexao = await mysql.createConnection({
+            host: process.env.dbhost,
+            user:process.env.dbuser,
+            password:process.env.dbpassword,
+            database:process.env.dbname,
+            port:process.env.dbport?parseInt(process.env.dbport):3306
+        })
+        const {nome_usuario,comentarios} = req.body
+        const [result,fields]  = 
+            await conexao.query("INSERT INTO comentarios VALUES (?,?)",
+                [nome_usuario,comentarios])
+        await conexao.end()
+        res.status(200).send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send("Erro do servidor")
+    }  
 })
 
-//rota para listar comentarios
-// app.get('/comentarios',(req,res) => {
-//     db.query('SELECT * FROM comentarios', (err,results)=> {
-//       if (err) return res.status(500).send(err);
-//       res.json(results);
-//     });
-//   });
-  
-//   //rota para adiconar um comentario
-//   app.post('/comentarios',(req,res)=> {
-//     const {id, nome_usuario, comentario} = req.body;
-//     db.query = 'insert into comentarios (nome_usuario, comentario) values (?,?)';
-//       db.query([nome_usuario,comentario], (err,result) =>{
-//         if (err) {
-//             res.status(500).json({error: 'ERRO ao criar comentario'});
-//             } else{
-//                 res.status(200).json({id: result.insertId, nome_usuario, comentario});
-//         }
-//       });
-//     });
-        
+
