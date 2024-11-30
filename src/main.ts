@@ -17,11 +17,11 @@ app.get("/usuarios",async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const [result,fields]  = await conexao.query("SELECT * FROM usuarios")
         await conexao.end()
@@ -34,11 +34,11 @@ app.get("/usuarios",async(req,res)=>{
 app.post("/usuarios",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {id, nome_usuario, email_usuario, senha_usuario, foto_usuario} = req.body
         const [result,fields]  = 
@@ -57,11 +57,11 @@ app.get("/album",async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         
         const [result,fields]  = await conexao.query("SELECT * FROM album")
@@ -75,11 +75,11 @@ app.get("/album",async(req,res)=>{
 app.post("/album",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {id, nome_album, cantor_musica, quant_musicas_album, lancamento_album, capa_album, ouvintes_album} = req.body
         const [result,fields]  = 
@@ -98,11 +98,11 @@ app.get("/musicas",async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const [result,fields]  = await conexao.query("SELECT * FROM musicas")
         await conexao.end()
@@ -115,11 +115,11 @@ app.get("/musicas",async(req,res)=>{
 app.post("/musicas",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica} = req.body
         const [result,fields]  = 
@@ -138,11 +138,11 @@ app.get('/comentarios', async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         //PASSO 3: QUERY  -> SELECT * FROM produtos
         const [result,fields]  = await conexao.query("SELECT * FROM comentarios")
@@ -157,11 +157,11 @@ app.get('/comentarios', async(req,res)=>{
 app.post('/comentarios', async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"localhost",
-            user:process.env.dbuser?process.env.dbuser:"root",
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"defaultdb",
-            port:process.env.dbport?parseInt(process.env.dbport):3306
+            port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {nome_usuario,comentarios} = req.body
         const [result,fields]  = 
