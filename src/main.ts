@@ -17,10 +17,10 @@ app.get("/usuarios",async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost,
-            user:process.env.dbuser,
-            password:process.env.dbpassword,
-            database:process.env.dbname,
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const [result,fields]  = await conexao.query("SELECT * FROM usuarios")
@@ -34,10 +34,10 @@ app.get("/usuarios",async(req,res)=>{
 app.post("/usuarios",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost,
-            user:process.env.dbuser,
-            password:process.env.dbpassword,
-            database:process.env.dbname,
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {id, nome_usuario, email_usuario, senha_usuario, foto_usuario} = req.body
@@ -57,10 +57,10 @@ app.get("/album",async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost,
-            user:process.env.dbuser,
-            password:process.env.dbpassword,
-            database:process.env.dbname,
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         
@@ -75,10 +75,10 @@ app.get("/album",async(req,res)=>{
 app.post("/album",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost,
-            user:process.env.dbuser,
-            password:process.env.dbpassword,
-            database:process.env.dbname,
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {id, nome_album, cantor_musica, quant_musicas_album, lancamento_album, capa_album, ouvintes_album} = req.body
@@ -98,10 +98,10 @@ app.get('/comentarios', async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost,
-            user:process.env.dbuser,
-            password:process.env.dbpassword,
-            database:process.env.dbname,
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         //PASSO 3: QUERY  -> SELECT * FROM produtos
@@ -117,10 +117,10 @@ app.get('/comentarios', async(req,res)=>{
 app.post('/comentarios', async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost,
-            user:process.env.dbuser,
-            password:process.env.dbpassword,
-            database:process.env.dbname,
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):16629
         })
         const {nome_usuario,comentarios} = req.body
