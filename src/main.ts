@@ -27,7 +27,7 @@ app.get("/usuarios",async(req,res)=>{
         await conexao.end()
         res.send(result)
     }catch(e){
-        res.status(500).send("Erro do servidor")
+        res.status(500).send(e)
     }  
 })
 
