@@ -35,7 +35,7 @@ create table comentarios(
 id int primary key,
 nome_usuario varchar(200) not null,
 comentarios TEXT not null
-);
+ );
 
 insert into musicas values ('1','Evidências','Chitãozinho & Xororó','Sertanejo','A música fala sobre um amor inegável e intenso, com letras marcantes que expressam o desejo de admitir sentimentos que são difíceis de esconder. É considerada um clássico do sertanejo e tem grande popularidade no Brasil.','https://e-cdns-images.dzcdn.net/images/cover/3e0fc453b6f411cfbe99ef3151161b20/500x500-000000-80-0-0.jpg','1990','91 mi');
 INSERT INTO musicas VALUES ('2', 'Billie Jean', 'Michael Jackson', 'Pop/R&B', 'A música conta a história de uma mulher chamada Billie Jean, que afirma que o narrador é o pai de seu filho. A letra é marcada pelo mistério e aborda questões de fama, obsessão e a responsabilidade emocional.', 'https://www.google.com.br/url?sa=i&url=https%3A%2F%2Futadtv.utad.pt%2Fprogramas%2Fouvido-redacao%2Fmichael-jackson-billie-jean-historia-fa-obsessao-pelo-cantor%2F&psig=AOvVaw0jZwHmM4aEvfRLO53wspii&ust=1730890622496000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOCajMGExYkDFQAAAAAdAAAAABAJ', '1983', '1,7 bi');
