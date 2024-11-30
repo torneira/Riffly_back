@@ -102,7 +102,7 @@ app.get("/musicas",async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const [result,fields]  = await conexao.query("SELECT * FROM musicas")
         await conexao.end()
@@ -119,7 +119,7 @@ app.post("/musicas",async(req,res)=>{
             user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
-            port:process.env.dbport?parseInt(process.env.dbport):16629
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica} = req.body
         const [result,fields]  = 
