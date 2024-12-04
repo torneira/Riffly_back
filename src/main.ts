@@ -123,7 +123,7 @@ app.post("/musicas",async(req,res)=>{
         })
         const {id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica} = req.body
         const [result,fields]  = 
-            await conexao.query("INSERT INTO usuarios VALUES (?,?,?,?,?,?,?,?)",
+            await conexao.query("INSERT INTO musicas VALUES (?,?,?,?,?,?,?,?)",
                 [id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica])
         await conexao.end()
         res.status(200).send(result)
