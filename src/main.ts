@@ -9,7 +9,7 @@ const app = express()
 //incluir pra ele receber json
 app.use(express.json())  //Middleware
 //incluir o CORS -> QUANDO A GENTE TEM OUTRA PORTA FAZENDO REQUISIÇÃO PARA A PORTA DO SERVIDOR
-app.use(cors())
+app.use(cors({ origin: 'https://riffly-front.vercel.app' }))
 //ROTAS
 
 app.get("/usuarios",async(req,res)=>{
