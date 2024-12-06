@@ -112,7 +112,7 @@ app.get("/musicas",async(req,res)=>{
     }  
 })
 
-app.post("/musicas",async(req,res)=>{
+app.post("/cadastro-musicas",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
