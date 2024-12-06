@@ -1,4 +1,4 @@
-
+ 
 // 1 - Para construir um servidor back-end e responder
 // Vamos utilizar o EXPRESS
 import express from 'express'
@@ -9,7 +9,7 @@ const app = express()
 //incluir pra ele receber json
 app.use(express.json())  //Middleware
 //incluir o CORS -> QUANDO A GENTE TEM OUTRA PORTA FAZENDO REQUISIÇÃO PARA A PORTA DO SERVIDOR
-app.use(cors({ origin: 'https://riffly-front.vercel.app' }))
+app.use(cors())
 //ROTAS
 
 app.get("/usuarios",async(req,res)=>{
@@ -98,10 +98,10 @@ app.get("/musicas",async(req,res)=>{
 
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
-            user:process.env.dbuser?process.env.dbuser:"avnadmin",
-            password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            host: process.env.dbhost,
+            user:process.env.dbuser,
+            password:process.env.dbpassword,
+            database:process.env.dbname,
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const [result,fields]  = await conexao.query("SELECT * FROM musicas")
@@ -115,10 +115,10 @@ app.get("/musicas",async(req,res)=>{
 app.post("/musicas",async(req,res)=>{
     try{
         const conexao = await mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
-            user:process.env.dbuser?process.env.dbuser:"avnadmin",
-            password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            host: process.env.dbhost,
+            user:process.env.dbuser,
+            password:process.env.dbpassword,
+            database:process.env.dbname,
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {id, nome_musica, cantor_musica, genero_musica, letra_musica, capa_musica, lancamento_musica, ouvintes_musica} = req.body
