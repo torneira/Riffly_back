@@ -7,11 +7,11 @@ class BancoMysql {
     // Métodos
     constructor() {
         this.conexao = mysql.createConnection({
-            host: process.env.dbhost ? process.env.dbhost : "localhost",
-            user: process.env.dbuser ? process.env.dbuser : "root",
-            password: process.env.dbpassword ? process.env.dbpassword : "",
-            database: process.env.dbname ? process.env.dbname : "banco1022b",
-            port: process.env.dbport ? parseInt(process.env.dbport) : 3306
+            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
+            user:process.env.dbuser?process.env.dbuser:"avnadmin",
+            password:process.env.dbpassword?process.env.dbpassword:"",
+            database:process.env.dbname?process.env.dbname:"playmusic",
+            port:process.env.dbport?parseInt(process.env.dbport):3306
         });
     }
 
@@ -25,30 +25,32 @@ class BancoMysql {
         await conn.end();
     }
 
-    async listar(){
+    
+    async excluirMusica(id:string){
         const conn = await this.getConnection()
-        const [result, fields] = await conn.query("SELECT * FROM produtos");
-        return result 
-    }
-
-    async inserir(produto:{id:string,nome:string,descricao:string,preco:string,imagem:string}){
-        const conn = await this.getConnection()
-        const sqlQuery = "INSERT INTO produtos (id,nome,descricao,preco,imagem) VALUES (?,?,?,?,?)"
-        const parametro = [produto.id,produto.nome,produto.descricao,produto.preco,produto.imagem]
-        const [result, fields] = await conn.query(sqlQuery,parametro);
-        return result
-    }
-    async excluir(id:string){
-        const conn = await this.getConnection()
-        const sqlQuery = "DELETE FROM produtos WHERE id = ?"
+        const sqlQuery = "DELETE FROM musicas WHERE id = ?"
         const parametro = [id]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
-    async alterar(id:string,produto:{id?:string,nome:string,descricao:string,preco:string,imagem:string}){
+    async alterarMusica(id:string,musicas:{id?:string,nome_musica:string,cantor_musica:string,genero_musica:string,letra_musica:string, capa_musica:string,lancamento_musica:string, ouvintes_musica:string }){
         const conn = await this.getConnection()
-        const sqlQuery = "UPDATE produtos SET nome=?,descricao=?,preco=?,imagem=? WHERE id = ?"
-        const parametro = [produto.nome,produto.descricao,produto.preco,produto.imagem,id]
+        const sqlQuery = "UPDATE musicas SET nome_musica=?,cantor_musica=?,genero_musica=?,letra_musica=?,capa_musica=?, lancamento_musica=?, ouvintes_musica=?  WHERE id = ?"
+        const parametro = [musicas.nome_musica,musicas.cantor_musica,musicas.genero_musica,musicas.letra_musica, musicas.capa_musica,musicas.lancamento_musica,musicas.ouvintes_musica,id]
+        const [result, fields] = await conn.query(sqlQuery,parametro);
+        return result
+    }
+    async excluirUsuario(id:string){
+        const conn = await this.getConnection()
+        const sqlQuery = "DELETE FROM usuarios WHERE id = ?"
+        const parametro = [id]
+        const [result, fields] = await conn.query(sqlQuery,parametro);
+        return result
+    }
+    async alterarUsuario(id:string,usuarios:{id?:string,nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
+        const conn = await this.getConnection()
+        const sqlQuery = "UPDATE usuarios SET nome_usuario=?,email_usuario=?,senha_usuario=?,foto_usuario=? WHERE id = ?"
+        const parametro = [usuarios.nome_usuario,usuarios.email_usuario,usuarios.senha_usuario,usuarios.foto_usuario,id]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
