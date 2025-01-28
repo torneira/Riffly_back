@@ -20,7 +20,7 @@ app.get("/usuarios",async(req,res)=>{
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const [result,fields]  = await conexao.query("SELECT * FROM usuarios")
@@ -37,7 +37,7 @@ app.post("/usuarios",async(req,res)=>{
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {id, nome_usuario, email_usuario, senha_usuario, foto_usuario} = req.body
@@ -60,7 +60,7 @@ app.get("/album",async(req,res)=>{
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         
@@ -78,7 +78,7 @@ app.post("/album",async(req,res)=>{
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {id, nome_album, cantor_musica, quant_musicas_album, lancamento_album, capa_album, ouvintes_album} = req.body
@@ -141,7 +141,7 @@ app.get('/comentarios', async(req,res)=>{
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         //PASSO 3: QUERY  -> SELECT * FROM produtos
@@ -160,7 +160,7 @@ app.post('/comentarios', async(req,res)=>{
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         })
         const {nome_usuario,comentarios} = req.body

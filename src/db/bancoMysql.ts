@@ -10,7 +10,7 @@ class BancoMysql {
             host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
             user:process.env.dbuser?process.env.dbuser:"avnadmin",
             password:process.env.dbpassword?process.env.dbpassword:"",
-            database:process.env.dbname?process.env.dbname:"defaultdb",
+            database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306
         });
     }
