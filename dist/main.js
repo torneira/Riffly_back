@@ -51,6 +51,8 @@ app.post("/usuarios", async (req, res) => {
         res.status(500).send("Erro do servidor");
     }
 });
+
+
 app.get("/album", async (req, res) => {
     try {
         const conexao = await promise_1.default.createConnection({
