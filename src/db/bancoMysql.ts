@@ -37,6 +37,19 @@ class BancoMysql {
         return result 
     }
 
+    async listarAlbum(){
+        const conn = await this.getConnection()
+        const [result, fields] = await conn.query("SELECT * FROM album");
+        return result 
+    }
+
+    async listarComentarios(){
+        const conn = await this.getConnection()
+        const [result, fields] = await conn.query("SELECT * FROM comentario");
+        return result 
+    }
+
+
     async inserirUsuario(usuarios:{id:number,nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
         const conn = await this.getConnection()
         const sqlQuery = "INSERT INTO usuarios (id,nome_usuario,email_usuario,senha_usuario,foto_usuario) VALUES (?,?,?,?,?)"
