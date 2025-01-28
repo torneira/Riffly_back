@@ -118,7 +118,7 @@ app.delete("/musicas/:id",async(req, res)=>{
      const sqlQuery = "DELETE FROM musicas WHERE id=?"
      const parametro = [req.params.id]
      const banco = new BancoMysql();
-     const result = await banco.excluirMusica(req.params.id)
+     const result = await banco.excluirMusicas(req.params.id)
      res.status(200).send(result)
  }catch(e){
      console.log(e)
@@ -136,7 +136,7 @@ app.put("/musicas/:id",async(req,res)=>{
         const musicas = {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica}
         const banco = new BancoMysql();
 
-        const result = await banco.alterarMusica(req.params.id,musicas)
+        const result = await banco.alterarMusicas(req.params.id,musicas)
 
         res.status(200).send(result)
     }catch(e){
@@ -153,7 +153,7 @@ app.put("/musicas/:id",async(req,res)=>{
             const musicas = {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica}
             const banco = new BancoMysql();
     
-            const result = await banco.alterarMusica(req.params.id,musicas)
+            const result = await banco.alterarMusicas(req.params.id,musicas)
     
             res.status(200).send(result)
         }catch(e){
