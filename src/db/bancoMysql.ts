@@ -107,7 +107,7 @@ class BancoMysql {
     async alterarUsuarios(id:string,usuarios:{nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
         const conn = await this.getConnection()
         const sqlQuery = "UPDATE usuarios SET nome_usuario=?,email_usuario=?,senha_usuario=?,foto_usuario=? VALUES WHERE id = ?"
-        const parametro = [id,usuarios.nome_usuario,usuarios.email_usuario,usuarios.senha_usuario,usuarios.foto_usuario]
+        const parametro = [usuarios.nome_usuario,usuarios.email_usuario,usuarios.senha_usuario,usuarios.foto_usuario,id]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
