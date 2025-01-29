@@ -112,6 +112,46 @@ app.post("/usuarios",async(req,res)=>{
     }  
 })
 
+app.post("/album",async(req,res)=>{
+    try{
+        const {id ,nome_album , cantor_album , quant_musicas_album ,lancamento_album ,capa_album ,ouvintes_album} = req.body
+        
+        const banco = new BancoMysql();
+        
+        const album = {id:parseInt(id),nome_album , cantor_album , quant_musicas_album ,lancamento_album ,capa_album ,ouvintes_album}
+        
+        const result = await banco.inserirAlbum(album)
+        console.log(result)
+        
+        await banco.end()
+        
+        res.status(200).send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send("Erro do servidor")
+    }  
+})
+
+app.post("/cometarios",async(req,res)=>{
+    try{
+        const {id, nome_usuario, comentarios } = req.body
+        
+        const banco = new BancoMysql();
+        
+        const comentario = {id:parseInt(id),nome_usuario, comentarios}
+        
+        const result = await banco.inserirComentario(comentario)
+        console.log(result)
+        
+        await banco.end()
+        
+        res.status(200).send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send("Erro do servidor")
+    }  
+})
+
 
 
 
@@ -162,15 +202,15 @@ app.put("/musicas/:id",async(req,res)=>{
     }  
     })
 
-    app.put("/musicas/:id",async(req,res)=>{
+    app.put("/usuarios/:id",async(req,res)=>{
         console.log("Testando alterar o produto de id:", req.params.id)
         try{
-            const {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica} = req.body
+            const {id,nome_usuario,email_usuario,senha_usuario,foto_usuario} = req.body
             //const sqlQuery = "UPDATE produtos set nome=?, descricao=?, preco=?, imagem=? WHERE id=?"
-            const musicas = {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica}
+            const usuarios = {id,nome_usuario,email_usuario,senha_usuario,foto_usuario}
             const banco = new BancoMysql();
     
-            const result = await banco.alterarMusicas(req.params.id,musicas)
+            const result = await banco.alterarUsuarios(req.params.id, usuarios)
     
             res.status(200).send(result)
         }catch(e){

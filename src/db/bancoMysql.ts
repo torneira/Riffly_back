@@ -65,6 +65,22 @@ class BancoMysql {
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
+
+    async inserirAlbum(album:{id:number ,nome_album:string,cantor_album:string,quant_musicas_album:string,lancamento_album:string,capa_album:string ,ouvintes_album:string }){
+        const conn = await this.getConnection()
+        const sqlQuery = "INSERT INTO album ( id ,nome_album , cantor_album , quant_musicas_album ,lancamento_album ,capa_album ,ouvintes_album) VALUES (?,?,?,?,?,?,?,?)"
+        const parametro = [album.id,album.nome_album, album.cantor_album, album.quant_musicas_album, album.lancamento_album, album.capa_album, album.ouvintes_album]
+        const [result, fields] = await conn.query(sqlQuery,parametro);
+        return result
+    }
+
+    async inserirComentario(comentario:{id:number, nome_usuario:string, comentarios:string}){
+        const conn = await this.getConnection()
+        const sqlQuery = "INSERT INTO album ( id, nome_usuario, comentarios) VALUES (?,?,?)"
+        const parametro = [comentario.id, comentario.nome_usuario, comentario.comentarios]
+        const [result, fields] = await conn.query(sqlQuery,parametro);
+        return result
+    }
     
     async excluirMusicas(id:string){
         const conn = await this.getConnection()
@@ -88,10 +104,10 @@ class BancoMysql {
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
-    async alterarUsuarios(usuarios:{id:number,nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
+    async alterarUsuarios(id:string,usuarios:{nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
         const conn = await this.getConnection()
-        const sqlQuery = "Update usuarios SET nome_usuario=?,email_usuario=?,senha_usuario=?,foto_usuario=? VALUES WHERE id = ?"
-        const parametro = [usuarios.id,usuarios.nome_usuario,usuarios.email_usuario,usuarios.senha_usuario,usuarios.foto_usuario]
+        const sqlQuery = "UPDATE usuarios SET nome_usuario=?,email_usuario=?,senha_usuario=?,foto_usuario=? VALUES WHERE id = ?"
+        const parametro = [id,usuarios.nome_usuario,usuarios.email_usuario,usuarios.senha_usuario,usuarios.foto_usuario]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
