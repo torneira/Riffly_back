@@ -7,8 +7,8 @@ class BancoMysql {
     // Métodos
     constructor() {
         this.conexao = mysql.createConnection({
-            host: process.env.dbhost?process.env.dbhost:"riffly-estudante-973a.e.aivencloud.com",
-            user:process.env.dbuser?process.env.dbuser:"avnadmin",
+            host: process.env.dbhost?process.env.dbhost:"localhost",
+            user:process.env.dbuser?process.env.dbuser:"root",
             password:process.env.dbpassword?process.env.dbpassword:"",
             database:process.env.dbname?process.env.dbname:"playmusic",
             port:process.env.dbport?parseInt(process.env.dbport):3306

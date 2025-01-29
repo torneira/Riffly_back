@@ -17,7 +17,7 @@ app.use(cors())
 import BancoMysql from './db/bancoMysql'
 
 
-app.get("/musicas/:id",async(req,res)=>{
+app.get("/musicas",async(req,res)=>{
     try{
         const banco = new BancoMysql();
         const result = await banco.listarMusicas()
