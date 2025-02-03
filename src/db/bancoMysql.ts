@@ -37,6 +37,12 @@ class BancoMysql {
         return result 
     }
 
+    async listarMusicasId(){
+        const conn = await this.getConnection()
+        const [result, fields] = await conn.query("SELECT usuarios ");
+        return result 
+    }
+
     async listarAlbum(){
         const conn = await this.getConnection()
         const [result, fields] = await conn.query("SELECT * FROM album");
