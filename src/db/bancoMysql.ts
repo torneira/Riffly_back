@@ -51,7 +51,7 @@ class BancoMysql {
 
     async listarComentarios(){
         const conn = await this.getConnection()
-        const [result, fields] = await conn.query("SELECT * FROM comentario");
+        const [result, fields] = await conn.query("SELECT * FROM comentarios");
         return result 
     }
 
