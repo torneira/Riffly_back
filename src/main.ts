@@ -16,7 +16,7 @@ app.use(cors())
 
 import BancoMysql from './db/bancoMysql'
 
-
+//MUSICAS
 app.get("/musicas",async(req,res)=>{
     try{
         const banco = new BancoMysql();
@@ -29,7 +29,21 @@ app.get("/musicas",async(req,res)=>{
         res.status(500).send("Erro do servidor")
     }  
 })
+app.put("/musicas",async(req,res)=>{
+    const banco = new BancoMysql();
+    try{
+        
+        const result = await banco.alterarMusicas()
+        console.log(result)
+        await banco.end()
+        res.send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send("Erro do servidor")
+    }  
+})
 
+//USUARIOS
 app.get("/usuarios",async(req,res)=>{
     try{
         const banco = new BancoMysql();
@@ -43,6 +57,21 @@ app.get("/usuarios",async(req,res)=>{
     }  
 })
 
+app.put("/usuarios",async(req,res)=>{
+    try{
+        const banco = new BancoMysql();
+        const result = await banco.alterarUsuarios()
+        console.log(result)
+        await banco.end()
+        res.send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send("Erro do servidor")
+    }  
+})
+
+
+//ALBUM
 app.get("/album",async(req,res)=>{
     try{
         const banco = new BancoMysql();
