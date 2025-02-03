@@ -186,7 +186,7 @@ app.delete("/musicas/:id",async(req, res)=>{
 
 
 app.put("/musicas/:id",async(req,res)=>{
-    console.log("Testando alterar o produto de id:", req.params.id)
+    console.log("Testando alterar a musica de id:", req.params.id)
     try{
         const {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica} = req.body
         //const sqlQuery = "UPDATE produtos set nome=?, descricao=?, preco=?, imagem=? WHERE id=?"
