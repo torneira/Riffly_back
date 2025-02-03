@@ -31,18 +31,18 @@ app.get("/musicas",async(req,res)=>{
 })
 
 
-app.get("/musicas/:id",async(req,res)=>{
-    try{
-        const banco = new BancoMysql();
-        const result = await banco.listarMusicasId(req.params.id)
-        console.log(result)
-        await banco.end()
-        res.send(result)
-    }catch(e){
-        console.log(e)
-        res.status(500).send("Erro do servidor")
-    }  
-})
+// app.get("/musicas/:id",async(req,res)=>{
+//     try{
+//         const banco = new BancoMysql();
+//         const result = await banco.listarMusicasId(req.params.id)
+//         console.log(result)
+//         await banco.end()
+//         res.send(result)
+//     }catch(e){
+//         console.log(e)
+//         res.status(500).send("Erro do servidor")
+//     }  
+// })
 
 app.get("/usuarios",async(req,res)=>{
     try{
@@ -91,11 +91,11 @@ app.get("/comentarios",async(req,res)=>{
 
 app.post("/musicas",async(req,res)=>{
     try{
-        const {id,nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica} = req.body
+        const {id,nome_musica,cantor_musica,genero_musica, capa_musica,lancamento_musica, ouvintes_musica} = req.body
         
         const banco = new BancoMysql();
         
-        const musicas = {id:parseInt(id), nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica}
+        const musicas = {id:parseInt(id), nome_musica,cantor_musica,genero_musica, capa_musica,lancamento_musica, ouvintes_musica}
         
         const result = await banco.inserirMusica(musicas)
         console.log(result)
@@ -205,9 +205,9 @@ app.delete("/musicas/:id",async(req, res)=>{
 app.put("/musicas/:id",async(req,res)=>{
     console.log("Testando alterar a musica de id:", req.params.id)
     try{
-        const {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica} = req.body
+        const {nome_musica,cantor_musica,genero_musica, capa_musica,lancamento_musica, ouvintes_musica} = req.body
         //const sqlQuery = "UPDATE produtos set nome=?, descricao=?, preco=?, imagem=? WHERE id=?"
-        const musicas = {nome_musica,cantor_musica,genero_musica,letra_musica, capa_musica,lancamento_musica, ouvintes_musica}
+        const musicas = {nome_musica,cantor_musica,genero_musica, capa_musica,lancamento_musica, ouvintes_musica}
         const banco = new BancoMysql();
 
         const result = await banco.alterarMusicas(req.params.id,musicas)
