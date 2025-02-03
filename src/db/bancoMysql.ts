@@ -74,7 +74,7 @@ class BancoMysql {
 
     async inserirAlbum(album:{id:number ,nome_album:string,cantor_album:string,quant_musicas_album:string,lancamento_album:string,capa_album:string ,ouvintes_album:string }){
         const conn = await this.getConnection()
-        const sqlQuery = "INSERT INTO album ( id ,nome_album , cantor_album , quant_musicas_album ,lancamento_album ,capa_album ,ouvintes_album) VALUES (?,?,?,?,?,?,?,?)"
+        const sqlQuery = "INSERT INTO album ( id ,nome_album , cantor_album , quant_musicas_album ,lancamento_album ,capa_album ,ouvintes_album) VALUES (?,?,?,?,?,?,?)"
         const parametro = [album.id,album.nome_album, album.cantor_album, album.quant_musicas_album, album.lancamento_album, album.capa_album, album.ouvintes_album]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
