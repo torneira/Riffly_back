@@ -151,13 +151,13 @@ app.post("/album",async(req,res)=>{
 
 app.post("/cometarios",async(req,res)=>{
     try{
-        const {id, nome_usuario, comentarios } = req.body
+        const {id, nome_usuario, comentario } = req.body
         
         const banco = new BancoMysql();
         
-        const comentario = {id:parseInt(id),nome_usuario, comentarios}
+        const comentarios = {id:parseInt(id),nome_usuario, comentario}
         
-        const result = await banco.inserirComentario(comentario)
+        const result = await banco.inserirComentario(comentarios)
         console.log(result)
         
         await banco.end()

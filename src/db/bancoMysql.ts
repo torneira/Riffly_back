@@ -80,10 +80,10 @@ class BancoMysql {
         return result
     }
 
-    async inserirComentario(comentario:{id:number, nome_usuario:string, comentarios:string}){
+    async inserirComentario(coment:{id:number, nome_usuario:string, comentario:string}){
         const conn = await this.getConnection()
-        const sqlQuery = "INSERT INTO comentarios ( id, nome_usuario, comentarios) VALUES (?,?,?)"
-        const parametro = [comentario.id, comentario.nome_usuario, comentario.comentarios]
+        const sqlQuery = "INSERT INTO comentarios ( id, nome_usuario, comentario) VALUES (?,?,?)"
+        const parametro = [coment.id, coment.nome_usuario, coment.comentario]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
