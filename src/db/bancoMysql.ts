@@ -37,11 +37,11 @@ class BancoMysql {
         return result 
     }
 
-    // async listarMusicasId(id:string){
-    //     const conn = await this.getConnection()
-    //     const [result, fields] = await conn.query("SELECT musicas WHERE id=?");
-    //     return result 
-    //}
+    async listarMusicasId(id:string){
+        const conn = await this.getConnection()
+        const [result, fields] = await conn.query("SELECT WHERE id=? FROM musicas ");
+        return result 
+    }
 
     async listarAlbum(){
         const conn = await this.getConnection()
