@@ -37,6 +37,12 @@ class BancoMysql {
         return result 
     }
 
+    async listarMusicasId(id:string){
+        const conn = await this.getConnection()
+        const [result, fields] = await conn.query("SELECT musicas WHERE id=?");
+        return result 
+    }
+
     async listarAlbum(){
         const conn = await this.getConnection()
         const [result, fields] = await conn.query("SELECT * FROM album");
@@ -60,7 +66,7 @@ class BancoMysql {
 
     async inserirMusica(musicas:{id:number,nome_musica:string,cantor_musica:string,genero_musica:string,capa_musica:string, lancamento_musica:string, ouvintes_musica:string }){
         const conn = await this.getConnection()
-        const sqlQuery = "INSERT INTO musicas ( id, nome_musica,cantor_musica,genero_musica,capa_musica, lancamento_musica, ouvintes_musica) VALUES (?,?,?,?,?,?,?)"
+        const sqlQuery = "INSERT INTO produtos ( id, nome_musica,cantor_musica,genero_musica,capa_musica, lancamento_musica, ouvintes_musica) VALUES (?,?,?,?,?,?,?,?)"
         const parametro = [musicas.nome_musica, musicas.cantor_musica, musicas.genero_musica, musicas.capa_musica, musicas.lancamento_musica, musicas.ouvintes_musica, musicas.id]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
