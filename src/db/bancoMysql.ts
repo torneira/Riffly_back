@@ -93,8 +93,8 @@ class BancoMysql {
     }
     async alterarMusicas(id: string, musicas: { id?:string, nome_musica: any; cantor_musica: any; genero_musica: any; capa_musica: any; lancamento_musica: any; ouvintes_musica: any; }){
         const conn = await this.getConnection()
-        const sqlQuery = "UPDATE musicas SET nome_musica=?,cantor_musica=?,genero_musica=?,capa_musica=?, lancamento_musica=?, ouvintes_musica=? WHERE id = ?"
-        const parametro = [id,musicas.nome_musica,musicas.cantor_musica,musicas.genero_musica, musicas.capa_musica,musicas.lancamento_musica, musicas.ouvintes_musica]
+        const sqlQuery = "UPDATE musicas SET nome_musica=?,cantor_musica=?,genero_musica=?,capa_musica=?, lancamento_musica=?, ouvintes_musica=? VALUES WHERE id = ?"
+        const parametro = [musicas.nome_musica,musicas.cantor_musica,musicas.genero_musica, musicas.capa_musica,musicas.lancamento_musica, musicas.ouvintes_musica, id]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }
