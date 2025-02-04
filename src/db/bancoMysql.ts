@@ -39,7 +39,7 @@ class BancoMysql {
 
     async listarMusicasId(id:string){
         const conn = await this.getConnection()
-        const [result, fields] = await conn.query("SELECT FROM musicas WHERE id=?");
+        const [result, fields] = await conn.query("SELECT * FROM musicas WHERE id=?");
         return result 
     }
 
@@ -48,13 +48,6 @@ class BancoMysql {
         const [result, fields] = await conn.query("SELECT * FROM album");
         return result 
     }
-
-    async listarComentarios(){
-        const conn = await this.getConnection()
-        const [result, fields] = await conn.query("SELECT * FROM comentarios");
-        return result 
-    }
-
 
     async inserirUsuario(usuarios:{id:number,nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
         const conn = await this.getConnection()
@@ -76,14 +69,6 @@ class BancoMysql {
         const conn = await this.getConnection()
         const sqlQuery = "INSERT INTO album ( id ,nome_album , cantor_album , quant_musicas_album ,lancamento_album ,capa_album ,ouvintes_album) VALUES (?,?,?,?,?,?,?)"
         const parametro = [album.id,album.nome_album, album.cantor_album, album.quant_musicas_album, album.lancamento_album, album.capa_album, album.ouvintes_album]
-        const [result, fields] = await conn.query(sqlQuery,parametro);
-        return result
-    }
-
-    async inserirComentario(coment:{id:number, nome_usuario:string, comentario:string}){
-        const conn = await this.getConnection()
-        const sqlQuery = "INSERT INTO comentarios ( id, nome_usuario, comentario) VALUES (?,?,?)"
-        const parametro = [coment.id, coment.nome_usuario, coment.comentario]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
     }

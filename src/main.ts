@@ -73,20 +73,6 @@ app.get("/album",async(req,res)=>{
     }  
 })
 
-app.get("/comentarios",async(req,res)=>{
-    try{
-        const banco = new BancoMysql();
-        const result = await banco.listarComentarios()
-        console.log(result)
-        await banco.end()
-        res.send(result)
-    }catch(e){
-        console.log(e)
-        res.status(500).send("Erro do servidor")
-    }  
-})
-
-
 
 
 app.post("/musicas",async(req,res)=>{
@@ -148,28 +134,6 @@ app.post("/album",async(req,res)=>{
         res.status(500).send("Erro do servidor")
     }  
 })
-
-app.post("/cometarios",async(req,res)=>{
-    try{
-        const {id, nome_usuario, comentario } = req.body
-        
-        const banco = new BancoMysql();
-        
-        const comentarios = {id:parseInt(id),nome_usuario, comentario}
-        
-        const result = await banco.inserirComentario(comentarios)
-        console.log(result)
-        
-        await banco.end()
-        
-        res.status(200).send(result)
-    }catch(e){
-        console.log(e)
-        res.status(500).send("Erro do servidor")
-    }  
-})
-
-
 
 
 app.delete("/usuarios/:id",async(req, res)=>{
