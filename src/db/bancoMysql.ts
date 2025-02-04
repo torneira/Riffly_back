@@ -45,6 +45,14 @@ class BancoMysql {
         //Return the first element of the array
         return result[0]
     }
+    async listarUsuariosId(id:string){
+        const conn = await this.getConnection()
+        const sqlQuery = "SELECT * FROM usuarios WHERE id = ?"
+        const parametro = [id]
+        const [result, fields] = await conn.query(sqlQuery,parametro) as RowDataPacket[];
+        //Return the first element of the array
+        return result[0]
+    }
 
     async listarAlbum(){
         const conn = await this.getConnection()
@@ -100,7 +108,7 @@ class BancoMysql {
     }
     async alterarUsuarios(id:string,usuarios:{nome_usuario:string,email_usuario:string,senha_usuario:string,foto_usuario:string}){
         const conn = await this.getConnection()
-        const sqlQuery = "UPDATE usuarios SET nome_usuario=?,email_usuario=?,senha_usuario=?,foto_usuario=? VALUES WHERE id = ?"
+        const sqlQuery = "UPDATE usuarios SET nome_usuario=?,email_usuario=?,senha_usuario=?,foto_usuario=? WHERE id = ?"
         const parametro = [usuarios.nome_usuario,usuarios.email_usuario,usuarios.senha_usuario,usuarios.foto_usuario,id]
         const [result, fields] = await conn.query(sqlQuery,parametro);
         return result
