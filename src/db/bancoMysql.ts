@@ -47,7 +47,7 @@ class BancoMysql {
     }
     async listarUsuariosId(id:string){
         const conn = await this.getConnection()
-        const sqlQuery = "SELECT * FROM usuarios WHERE id = ?"
+        const sqlQuery = "SELECT * FROM usuario WHERE id = ?"
         const parametro = [id]
         const [result, fields] = await conn.query(sqlQuery,parametro) as RowDataPacket[];
         //Return the first element of the array

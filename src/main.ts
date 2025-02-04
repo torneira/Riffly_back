@@ -183,7 +183,7 @@ app.put("/musicas/:id",async(req,res)=>{
     }  
     })
 
-    app.put("/usuarios/:id",async(req,res)=>{
+    app.put("/usuario/:id",async(req,res)=>{
         console.log("Testando alterar o produto de id:", req.params.id)
         try{
             const {id,nome_usuario,email_usuario,senha_usuario,foto_usuario} = req.body
